@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ListFilter
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ListFilterer.GetIntegersFromList(new List<object>() { 1, 2, "a", "b", "aasf", "1", "123", 231});
+            Console.ReadLine();
+
+        }
+    }
+    public class ListFilterer
+    {
+        public static IEnumerable<int> GetIntegersFromList(List<object> listOfItems)
+        {
+            List<int> filteredList = new List<int>();
+
+            foreach (var item in listOfItems)
+            {
+                if (item.GetType() != typeof(string))
+                {
+                    filteredList.Add(int.Parse(item.ToString()));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return filteredList;
+        }
+    }
+
+}
